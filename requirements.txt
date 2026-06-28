@@ -1,0 +1,6 @@
+streamlit
+pandas
+plotly
+anthropic
+langchain-anthropic
+python-dotenv
