@@ -11,9 +11,7 @@ app_3.py
 app_v2.py
 xxxx_app.py
 
-# 데이터베이스
-*.db
-database.db
+# 데이터베이스 (src 내부 중복 DB만 제외)
 src/database.db
 
 # 대용량 데이터 파일
