@@ -36,16 +36,126 @@ st.markdown("""
     .report-section { background: white; border-radius: 12px; padding: 18px 20px; border: 1px solid #EAEAEA; margin-bottom: 12px; }
     .report-section-title { font-size: 13px; font-weight: 700; color: #555; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
     .report-rec { background: #F0F6FF; border-radius: 8px; padding: 10px 14px; margin-bottom: 8px; font-size: 14px; color: #333; border-left: 3px solid #378ADD; }
-    /* 사이드바 다크 스타일 */
-    [data-testid="stSidebar"] { background-color: #1E2130 !important; }
-    [data-testid="stSidebar"] * { color: #CDD3E0 !important; }
-    [data-testid="stSidebar"] h2 { color: white !important; font-size: 20px !important; font-weight: 700 !important; }
-    [data-testid="stSidebar"] .stRadio [data-testid="stWidgetLabel"] { display: none !important; }
-    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] { display: flex !important; flex-direction: column !important; gap: 4px !important; }
-    [data-testid="stSidebar"] .stRadio label { font-size: 22px !important; font-weight: 700 !important; color: white !important; padding: 12px 16px !important; border-radius: 8px !important; cursor: pointer !important; display: flex !important; align-items: center !important; }
-    [data-testid="stSidebar"] .stRadio label:hover { background-color: #2D3348 !important; }
-    [data-testid="stSidebar"] .stRadio input[type="radio"] { display: none !important; }
-    [data-testid="stSidebar"] hr { border-color: #2D3348 !important; }
+    /* 사이드바 스타일 */
+    [data-testid="stSidebar"] {
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #E5E7EB !important;
+    }
+    [data-testid="stSidebar"] h2 {
+        color: #111827 !important;
+        font-size: 18px !important;
+        font-weight: 800 !important;
+        margin-bottom: 14px !important;
+        letter-spacing: -0.4px !important;
+    }
+    [data-testid="stSidebar"] hr {
+        border-color: #E5E7EB !important;
+        margin: 14px 0 !important;
+    }
+    /* 네비게이션 탭: 컴팩트 pill 스타일 */
+    [data-testid="stSidebar"] .stRadio {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 5px !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+    }
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label {
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        color: #6B7280 !important;
+        padding: 8px 12px !important;
+        border-radius: 7px !important;
+        cursor: pointer !important;
+        transition: background 0.12s ease, color 0.12s ease !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        background-color: #F3F4F6 !important;
+        border: 1.5px solid transparent !important;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+        gap: 0 !important;
+        position: relative !important;
+    }
+    /* 툴팁 공통 스타일 */
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label::after {
+        position: absolute !important;
+        bottom: calc(100% + 7px) !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        background: #1F2937 !important;
+        color: #F9FAFB !important;
+        font-size: 11px !important;
+        font-weight: 500 !important;
+        padding: 4px 10px !important;
+        border-radius: 5px !important;
+        white-space: nowrap !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transition: opacity 0.15s ease !important;
+        z-index: 9999 !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.15) !important;
+    }
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label:hover::after {
+        opacity: 1 !important;
+    }
+    /* 탭별 툴팁 텍스트 */
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label:nth-child(1)::after {
+        content: "📊 대시보드로 이동" !important;
+    }
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label:nth-child(2)::after {
+        content: "🤖 AI 챗봇으로 이동" !important;
+    }
+    /* 라디오 인디케이터 div — 너비/높이 0으로 완전히 공간 제거 */
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label > div:first-child {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] input[type="radio"] {
+        display: none !important;
+    }
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label:hover {
+        background-color: #E5E7EB !important;
+        color: #374151 !important;
+    }
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label:has(input[type="radio"]:checked) {
+        background-color: #111827 !important;
+        color: #FFFFFF !important;
+        font-weight: 700 !important;
+        border-color: #111827 !important;
+        box-shadow: 0 1px 6px rgba(17, 24, 39, 0.18) !important;
+    }
+    [data-testid="stSidebar"] .stRadio div[role="radiogroup"] label:has(input[type="radio"]:checked) * {
+        color: #FFFFFF !important;
+    }
+    /* 사이드바 일반 텍스트 */
+    [data-testid="stSidebar"] .stMarkdown p {
+        color: #374151 !important;
+        font-size: 13px !important;
+        line-height: 1.65 !important;
+    }
+    [data-testid="stSidebar"] .stMarkdown h3 {
+        color: #111827 !important;
+        font-size: 10px !important;
+        font-weight: 800 !important;
+        margin-top: 18px !important;
+        margin-bottom: 5px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -104,7 +214,7 @@ def render_reviews(drill_df, card_class, tag_class, page_key):
 df = load_data()
 
 # 세션 상태 초기화
-for key, val in [("chat_messages", []), ("last_aspects", []), ("last_sentiment", None), ("report_data", None), ("_last_chat_input", "")]:
+for key, val in [("chat_messages", []), ("last_aspects", []), ("last_sentiment", None), ("report_data", None), ("_last_chat_input", ""), ("pending_message", None)]:
     if key not in st.session_state:
         st.session_state[key] = val
 
@@ -298,20 +408,17 @@ if page == "대시보드":
 # ════════════════════════════════════════════════
 else:
     with st.sidebar:
-        st.markdown("### 💬 질문 예시")
-        st.info("""
-- 전체 리뷰 중 부정 비율이 어떻게 돼?
-- 월별 속성별 교차 분석 차트 그려줘
-- 배송 부정 리뷰 보여줘
-- 평점 분포 차트 그려줘
-        """)
-        st.markdown("### 📊 차트 요청 예시")
-        st.success("""
-- 감성 비율 파이차트
-- 월별 감성 추이 라인차트
-- 속성별 감성 비교 차트
-- 평점 분포 보여줘
-        """)
+        st.markdown("""
+<div style="font-size:14px; font-weight:700; color:#111827; margin-bottom:10px;">💬 질문 요청 예시</div>
+<div style="background:#F0F6FF; border-radius:8px; padding:12px 14px; font-size:14px; color:#1E40AF; line-height:2;">
+• 어떤 속성의 데이터가 많은지 알려줘<br>
+• 배송 부정 리뷰 보여줘<br>
+• 평점 분포 차트 그려줘<br>
+• 감성 비율 파이차트 그려줘<br>
+• 월별 감성 추이 라인차트<br>
+• 속성별 감성 비교 차트
+</div>
+""", unsafe_allow_html=True)
 
     col_title, col_clear = st.columns([6, 1])
     with col_title:
@@ -357,6 +464,55 @@ else:
         bar_c = "#E24B4A" if sentiment_filter == "부정" else "#1D9E75" if sentiment_filter == "긍정" else "#378ADD"
         fill_c = "rgba(226,75,74,0.08)" if sentiment_filter == "부정" else "rgba(29,158,117,0.08)" if sentiment_filter == "긍정" else "rgba(55,138,221,0.08)"
 
+        # 파이 / 도넛 감지 (chart_type 우선, 키워드 보조)
+        is_pie   = chart_type == "pie"   or any(kw in q for kw in ["파이", "pie", "원차트", "원형", "비율 차트"])
+        is_donut = chart_type == "donut" or any(kw in q for kw in ["도넛", "도넛차트", "donut"])
+        if is_pie or is_donut:
+            hole       = 0.45 if is_donut else 0.0
+            chart_name = "도넛" if is_donut else "파이"
+            # 속성별 vs 감성별 판단
+            is_aspect_pie = any(kw in q for kw in ["속성", "카테고리", "분야", "항목"])
+            if is_aspect_pie:
+                asp_counts = {}
+                for al in plot_df["aspects_list"]:
+                    for a in al: asp_counts[a] = asp_counts.get(a, 0) + 1
+                if not asp_counts: return None
+                asp_series = pd.Series(asp_counts).sort_values(ascending=False)
+                TOP_N = 6
+                if len(asp_series) > TOP_N:
+                    top_s  = asp_series.head(TOP_N)
+                    others = pd.Series({"기타": asp_series.iloc[TOP_N:].sum()})
+                    asp_series = pd.concat([top_s, others])
+                labels = asp_series.index.tolist()
+                values = asp_series.values.tolist()
+                palette = ["#378ADD", "#1D9E75", "#E24B4A", "#F4845F", "#8B5CF6", "#F59E0B", "#6B7280"]
+                fig = go.Figure(go.Pie(
+                    labels=labels, values=values, hole=hole,
+                    marker_colors=palette[:len(labels)],
+                    textinfo="label+percent",
+                    textposition="auto",
+                    insidetextorientation="radial",
+                ))
+                title = f"속성별 리뷰 분포 ({chart_name}차트)"
+            else:
+                counts = plot_df["sentiment"].value_counts().reset_index()
+                counts.columns = ["감성", "건수"]
+                cmap = {"긍정": "#1D9E75", "부정": "#E24B4A", "중립": "#B4B2A9"}
+                fig = go.Figure(go.Pie(
+                    labels=counts["감성"], values=counts["건수"], hole=hole,
+                    marker_colors=[cmap.get(s, "#ccc") for s in counts["감성"]],
+                    textinfo="label+percent+value",
+                    textposition="auto",
+                ))
+                title = f"감성 분포 ({chart_name}차트)"
+            fig.update_layout(
+                title=title, height=420, paper_bgcolor="white",
+                font=dict(family="Noto Sans KR"),
+                legend=dict(orientation="h", yanchor="bottom", y=-0.25),
+                margin=dict(t=60, b=80, l=20, r=20),
+            )
+            return fig
+
         if chart_type == "monthly_aspect" or ("월별" in q and ("속성" in q or "교차" in q)):
             plot_df["월"] = plot_df["review_date"].dt.strftime("%Y-%m")
             rows = []
@@ -387,17 +543,13 @@ else:
             fig.update_layout(height=350, paper_bgcolor="white", plot_bgcolor="white", font=dict(family="Noto Sans KR"), legend_title="감성")
             return fig
 
-        if "파이" in q or "pie" in q or ("비율" in q and "차트" in q):
-            counts = plot_df["sentiment"].value_counts().reset_index()
-            counts.columns = ["감성", "건수"]
-            cmap = {"긍정": "#1D9E75", "부정": "#E24B4A", "중립": "#B4B2A9"}
-            fig = go.Figure(go.Pie(labels=counts["감성"], values=counts["건수"], hole=0.4, marker_colors=[cmap.get(s, "#ccc") for s in counts["감성"]], textinfo="label+percent+value"))
-            fig.update_layout(title="감성 분포", height=350, paper_bgcolor="white", font=dict(family="Noto Sans KR"))
-        elif "라인" in q or "추이" in q or "트렌드" in q:
+        if "라인" in q or "추이" in q or "트렌드" in q:
             daily = plot_df.groupby("review_date").size().reset_index(name="건수")
             fig = go.Figure(go.Scatter(x=daily["review_date"], y=daily["건수"], mode="lines+markers", line=dict(color=bar_c, width=2), fill="tozeroy", fillcolor=fill_c))
             fig.update_layout(title="날짜별 리뷰 트렌드", height=300, paper_bgcolor="white", plot_bgcolor="white", font=dict(family="Noto Sans KR"))
-        elif "속성별 감성" in q or "감성 비교" in q:
+            return fig
+
+        if "속성별 감성" in q or "감성 비교" in q:
             rows = []
             for a, sents in data_summary["속성별 감성 분포"].items():
                 for s, cnt in sents.items(): rows.append({"속성": a, "감성": s, "건수": cnt})
@@ -406,14 +558,16 @@ else:
             cmap2 = {"긍정": "#1D9E75", "부정": "#E24B4A", "중립": "#B4B2A9"}
             fig = px.bar(asp_df, x="속성", y="건수", color="감성", color_discrete_map=cmap2, barmode="stack", title="속성별 감성 분포")
             fig.update_layout(height=350, paper_bgcolor="white", plot_bgcolor="white", font=dict(family="Noto Sans KR"))
-        else:
-            asp_counts = {}
-            for al in plot_df["aspects_list"]:
-                for a in al: asp_counts[a] = asp_counts.get(a, 0) + 1
-            if not asp_counts: return None
-            asp_df = pd.DataFrame(list(asp_counts.items()), columns=["속성", "건수"]).sort_values("건수", ascending=True).tail(8)
-            fig = go.Figure(go.Bar(x=asp_df["건수"], y=asp_df["속성"], orientation="h", marker_color=bar_c, text=asp_df["건수"].apply(lambda x: f"{x:,}"), textposition="outside"))
-            fig.update_layout(title="속성별 리뷰 건수", height=350, paper_bgcolor="white", plot_bgcolor="white", xaxis=dict(showgrid=False, showticklabels=False), font=dict(family="Noto Sans KR"), margin=dict(t=40, b=10, l=10, r=60))
+            return fig
+
+        # 기본: 속성별 막대차트
+        asp_counts = {}
+        for al in plot_df["aspects_list"]:
+            for a in al: asp_counts[a] = asp_counts.get(a, 0) + 1
+        if not asp_counts: return None
+        asp_df = pd.DataFrame(list(asp_counts.items()), columns=["속성", "건수"]).sort_values("건수", ascending=True).tail(8)
+        fig = go.Figure(go.Bar(x=asp_df["건수"], y=asp_df["속성"], orientation="h", marker_color=bar_c, text=asp_df["건수"].apply(lambda x: f"{x:,}"), textposition="outside"))
+        fig.update_layout(title="속성별 리뷰 건수", height=350, paper_bgcolor="white", plot_bgcolor="white", xaxis=dict(showgrid=False, showticklabels=False), font=dict(family="Noto Sans KR"), margin=dict(t=40, b=10, l=10, r=60))
         return fig
 
     # 이전 대화 출력
@@ -423,14 +577,11 @@ else:
             if message.get("chart_json"):
                 st.plotly_chart(go.Figure(message["chart_json"]), use_container_width=True, key=f"hist_{i}")
 
-    # st.chat_input — 뷰포트 최하단에 sticky 고정 (사이드바 라디오로 페이지 전환 이미 해결됨)
-    user_input = st.chat_input("질문을 입력하세요 (예: 월별 속성별 교차 분석 차트 그려줘)")
+    # pending_message가 있으면 AI 응답 처리 (사용자 메시지는 이미 렌더링됨)
+    if st.session_state.get("pending_message"):
+        user_msg = st.session_state["pending_message"]
+        st.session_state["pending_message"] = None
 
-    if user_input:
-        user_msg = user_input.strip()
-        st.session_state["chat_messages"].append({"role": "user", "content": user_msg})
-
-        # 처리 중 표시 (인라인 렌더링 없이 placeholder만 사용)
         with st.spinner("분석 중입니다..."):
             try:
                 answer = ""
@@ -440,7 +591,13 @@ else:
                 decision_msg = [
                     ("system", """사용자 질문을 분석하여 아래 형식으로만 답하세요:
 차트필요: [예/아니오]
-차트종류: [monthly_aspect/monthly_trend/rating/기타]
+차트종류: [monthly_aspect/monthly_trend/rating/pie/donut/기타]
+  - pie: 파이차트, 원차트, 비율 차트 요청 시
+  - donut: 도넛차트, 도넛 모양 차트 요청 시
+  - monthly_aspect: 월별+속성 교차 분석
+  - monthly_trend: 월별 추이/트렌드
+  - rating: 평점/별점 분포
+  - 기타: 속성별 막대차트 등
 속성필터: [배송/품질/가격/고객서비스/디자인/기능/사이즈/기타/없음]
 감성필터: [긍정/부정/중립/전체/없음]"""),
                     ("user", user_msg)
@@ -476,17 +633,34 @@ else:
                     conversation_history += f"{role}: {msg['content'][:200]}\n"
 
                 system_prompt = f"""당신은 이커머스 리뷰 데이터 분석 전문가입니다.
-규칙:
+
+[절대 금지 사항 — 위반 시 응답 전체가 버려집니다]
+- JSON, Chart.js, Python, JavaScript 등 어떤 코드도 출력 금지
+- ```로 시작하는 코드블록 출력 금지
+- {{, }} 로 시작하는 JSON 구조 출력 금지
+- 차트 라이브러리 설정값 출력 금지
+
+[답변 규칙]
 1. 데이터 수치를 정확히 사용하세요
-2. 차트 코드나 JSON을 절대 출력하지 마세요
-3. 마크다운 코드블록을 응답에 포함하지 마세요
-4. 이전 대화 맥락을 참고하세요
-5. 간결하고 명확하게 답변하세요
+2. 차트는 시스템이 자동 생성하므로 텍스트로만 인사이트를 서술하세요
+3. 이전 대화 맥락을 참고하세요
+4. 2~4문장으로 간결하게 답변하세요
 
 이전 대화: {conversation_history}
 데이터: {json.dumps(data_summary, ensure_ascii=False)[:3000]}"""
 
-                answer = llm.invoke([("system", system_prompt), ("user", f"질문: {user_msg}")]).content
+                raw_answer = llm.invoke([("system", system_prompt), ("user", f"질문: {user_msg}")]).content
+
+                # 코드블록 및 JSON 후처리 제거
+                import re
+                def strip_code_blocks(text):
+                    # ```...``` 코드블록 전체 제거
+                    text = re.sub(r"```[\s\S]*?```", "", text)
+                    # 단독으로 등장하는 { ... } JSON 블록 제거 (줄 시작이 { 인 경우)
+                    text = re.sub(r"(?m)^\s*\{[\s\S]*?^\s*\}", "", text)
+                    return text.strip()
+
+                answer = strip_code_blocks(raw_answer)
 
                 review_keywords = ["리뷰 보여줘", "원문", "전체 리뷰", "리뷰 목록", "리뷰 알려줘", "실제 리뷰", "어떤 리뷰", "리뷰 예시", "샘플"]
                 if any(kw in user_msg for kw in review_keywords):
@@ -507,10 +681,18 @@ else:
                 answer = f"오류가 발생했습니다: {e}"
                 chart_json = None
 
-        # session_state에 저장 후 rerun → 루프에서 한 번만 깔끔하게 렌더링
         st.session_state["chat_messages"].append({
             "role": "assistant",
             "content": answer,
             "chart_json": chart_json
         })
+        st.rerun()
+
+    # 사용자 입력 → 즉시 메시지 표시 후 AI 처리
+    user_input = st.chat_input("질문을 입력하세요")
+
+    if user_input:
+        user_msg = user_input.strip()
+        st.session_state["chat_messages"].append({"role": "user", "content": user_msg})
+        st.session_state["pending_message"] = user_msg
         st.rerun()
